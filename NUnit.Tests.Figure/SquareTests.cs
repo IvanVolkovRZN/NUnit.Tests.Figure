@@ -8,10 +8,11 @@ using GeometricFigures;
 
 namespace NUnit.Tests.Figure
 {
+    [TestFixture]
     class SquareTests : AbstractTest
     {
         [Test, TestCaseSource("GeometricCircleSquare")]
-        public void GeometricFigureSquareArea(int n)
+        public void TestSquareArea(int n)
         {
 
             Square square = new Square(n);
@@ -22,7 +23,7 @@ namespace NUnit.Tests.Figure
         }
 
         [Test, TestCaseSource("GeometricCircleSquare")]
-        public void GeometricFigureSquareLenght(int n)
+        public void TestSquareLenght(int n)
         {
 
             Square square = new Square(n);
@@ -32,5 +33,20 @@ namespace NUnit.Tests.Figure
 
         }
 
+        [Test]  // Неготивный тест с отрицательным числом
+        public void TestSquareNegativeNumber()
+        {
+            Exception exception = null;
+            try
+            {
+                Square square = new Square(-9);
+            }
+            catch (Exception ex)
+            {
+                exception = ex;
+            }
+
+            Assert.IsNull(exception);
+        }
     }
 }

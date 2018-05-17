@@ -14,7 +14,7 @@ namespace NUnit.Tests.Figure
     {
         
         [Test, TestCaseSource("GeometricCircleSquare")]
-        public void GeometricFigureCircleArea(int n)
+        public void TestCircleArea(int n)
         {
             Circle circle = new Circle(n);
             double area = Math.PI * n * n;
@@ -23,12 +23,31 @@ namespace NUnit.Tests.Figure
         }
 
         [Test, TestCaseSource("GeometricCircleSquare")]
-        public void GeometricFigureCircleLenght(int n)
+        public void TestCircleLenght(int n)
         {
             Circle circle = new Circle(n);
             double lenght = 2 * Math.PI * n;
 
             Assert.AreEqual(Math.Round(lenght, ROUDING), Math.Round(circle.getLengthCircle(), ROUDING));
          }
+
+
+
+        [Test]  // Неготивный тест с отрицательным числом
+        public void TestCircleNegativeNumber()
+        {
+            Exception exception = null;
+            try
+            {
+                Circle circle = new Circle(-9);
+            }
+            catch (Exception ex)
+            {
+                exception = ex;
+            }
+
+            Assert.IsNull(exception);
+        }
     }
+
 }
